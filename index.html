@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Stream</title>
+</head>
+<body>
+    <center>
+    <h1>Camera Stream</h1>
+    
+    <!-- For Image -->
+    <img id="imageStream" src="#" alt="Camera Stream" style="max-width: 100%"/>
+</center>   
+    <!-- For Video -->
+    <!-- <video id="videoStream" controls style="max-width: 100%"></video> -->
+
+    <script>
+        // Update the following URL with the correct IP address and port
+        const streamUrl = "http://192.168.190.28/my_video";
+
+        // For Image
+        const imageElement = document.getElementById('imageStream');
+        
+        // For Video
+        // const videoElement = document.getElementById('videoStream');
+
+        function updateImageStream() {
+            // Append a timestamp to the URL to prevent caching
+            imageElement.src = `${streamUrl}?t=${Date.now()}`;
+        }
+
+        // Uncomment the following lines for Video
+        // function updateVideoStream() {
+        //     videoElement.src = `${streamUrl}?t=${Date.now()}`;
+        // }
+
+        // Call the update functions periodically
+        setInterval(() => {
+            updateImageStream();
+            // Uncomment the following line for Video
+            // updateVideoStream();
+        }, 1000); // Adjust the interval as needed
+    </script>
+</body>
+</html>
